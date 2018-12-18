@@ -1,31 +1,107 @@
-﻿@{
+﻿@using DevelopmentPlanner.Web.Models;
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="row">
+    <div class="col-md-12">
+
+
+        <div id="pivotgrid-demo">
+            @*@(Html.DevExtreme().Chart()
+                                                            .ID("pivotgrid-chart")
+                                                            .CommonSeriesSettings(s => s.Type(SeriesType.Bar))
+                                                            .Tooltip(t => t.Enabled(true).CustomizeTooltip("customize_tooltip").Format(Format.Currency))
+                                                            .Size(s => s.Height(200))
+                                                            .AdaptiveLayout(l => l.Width(450))
+                )*@
+
+            @(Html.DevExtreme().PivotGrid()
+                                                    .ID("tickets")
+                                                    .AllowSortingBySummary(true)
+                                                    .AllowSorting(true)
+                                                    .AllowFiltering(true)
+                                                    .AllowExpandAll(true)
+                                                    .Height(440)
+                                                    .ShowBorders(true)
+                                                    .FieldChooser(c => c.Enabled(false))
+                                                    .Export(e => e.Enabled(true).FileName("Sales"))
+                                                    .DataSource(d => d
+                                                        .Store(s => s.WebApi().Controller("Tickets"))
+                                                        .Fields(fields =>
+                                                        {
+                                                //fields.AddFor(m => m.DueDate)
+                                                //    .Caption("Due Date")
+                                                //    .Area(PivotGridArea.Column);
+                                                //fields.Add()
+                                                //    .Caption("Due Date")
+                                                //    .Width(120)
+                                                //    .DataField("dueDate")
+                                                //    .Area(PivotGridArea.Row);
+
+
+                                                fields.Add()
+                                                                .Caption("Priority")
+                                                                .Width(120)
+                                                                .DataField("priority")
+                                                                .Area(PivotGridArea.Row);
+
+                                                            fields.Add()
+                                                                .Caption("Status")
+                                                                .Width(120)
+                                                                .DataField("status")
+                                                                .Area(PivotGridArea.Filter);
+
+                                                            fields.Add()
+                                                                .Caption("Fund Code")
+                                                                .Width(150)
+                                                                .DataField("fundCode")
+                                                                .Area(PivotGridArea.Row);
+
+                                                            fields.Add()
+                                                                .Caption("Due Date")
+                                                                .DataField("dueDate")
+                                                                .DataType(PivotGridDataType.Date)
+                                                                .Area(PivotGridArea.Column);
+
+                                                            fields.Add()
+                                                                .Caption("Est Hours")
+                                                                .DataField("estHours")
+                                                                .DataType(PivotGridDataType.Number)
+                                                                .SummaryType(SummaryType.Sum)
+                                                                .Format(Format.Decimal)
+                                                                .Area(PivotGridArea.Data);
+                                                        })
+                                                            )
+            )
+
+        </div>
+
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+<script>
+    function customize_tooltip(args) {
+        return {
+            html: args.seriesName + " | Total<div class='currency'>" + args.valueText + "</div>"
+        };
+    }
+
+    function bind_chart(e) {
+        console.log('bind_chart');
+        e.component.bindChart($("#pivotgrid-chart"), {
+            dataFieldsDisplayMode: "splitPanes",
+            alternateDataFields: false
+        });
+        expand(e.component.getDataSource());
+    }
+
+    function expand(dataSource) {
+        setTimeout(function () {
+            dataSource.expandHeaderItem("row", ["North America"]);
+            dataSource.expandHeaderItem("column", [2013]);
+        }, 0);
+    }
+</script>

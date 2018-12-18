@@ -1,0 +1,8 @@
+{
+  "name": "DevelopmentPlanner",
+  "version": "1.0.0",
+  "devDependencies": {
+    "devextreme": "^18.2.3",
+    "devextreme-aspnet-data": "^2.0.0"
+  }
+}

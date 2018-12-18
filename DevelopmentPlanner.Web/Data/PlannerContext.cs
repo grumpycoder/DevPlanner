@@ -1,4 +1,5 @@
-﻿using DevelopmentPlanner.Web.Models;
+﻿using DevelopmentPlanner.Web.Data.Configuration;
+using DevelopmentPlanner.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,6 +19,13 @@ namespace DevelopmentPlanner.Web.Data
         }
 
         public DbSet<Ticket> Tickets { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Configurations.Add(new TicketConfiguration());
+        }
     }
 
 }

@@ -1,5 +1,8 @@
 ﻿using DevelopmentPlanner.Web.Data;
+using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Mvc;
 using System.Data.Entity;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -14,10 +17,16 @@ namespace DevelopmentPlanner.Web.Controllers.api
             context = new PlannerContext();
         }
 
-        public async Task<object> Get()
+        public async Task<HttpResponseMessage> GetAsync(DataSourceLoadOptions loadOptions)
         {
             var list = await context.Tickets.ToListAsync();
-            return Ok(list);
+            return Request.CreateResponse(DataSourceLoader.Load(list, loadOptions));
         }
+
+        //public async Task<object> Get()
+        //{
+        //    var list = await context.Tickets.ToListAsync();
+        //    return Ok(list);
+        //}
     }
 }

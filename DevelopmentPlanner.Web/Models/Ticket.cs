@@ -20,5 +20,9 @@ namespace DevelopmentPlanner.Web.Models
 
         public DateTime StartDate { get; set; }
 
+        public decimal? EstHours { get; set; }
+
+        public int Year { get; set; }
+
     }
 }
