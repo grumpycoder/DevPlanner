@@ -24,5 +24,6 @@ namespace DevelopmentPlanner.Web.Models
 
         public int Year { get; set; }
 
+        public int Quarter { get; set; }
     }
 }

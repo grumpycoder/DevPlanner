@@ -213,6 +213,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="js\dx.all.debug.js" />
+    <Content Include="js\dx.all.js" />
+    <Content Include="js\dx.mobile.debug.js" />
+    <Content Include="js\dx.mobile.js" />
+    <Content Include="js\dx.viz-web.debug.js" />
+    <Content Include="js\dx.viz-web.js" />
+    <Content Include="js\dx.viz.debug.js" />
+    <Content Include="js\dx.viz.js" />
+    <Content Include="js\dx.web.debug.js" />
+    <Content Include="js\dx.web.js" />
+    <Content Include="js\underscore-min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="libman.json" />
@@ -302,7 +313,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="node_modules\" />
+    <Folder Include="js\localization\" />
+    <Folder Include="js\vectormap-data\" />
+    <Folder Include="js\vectormap-utils\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

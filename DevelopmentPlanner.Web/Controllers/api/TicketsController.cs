@@ -19,8 +19,8 @@ namespace DevelopmentPlanner.Web.Controllers.api
 
         public async Task<HttpResponseMessage> GetAsync(DataSourceLoadOptions loadOptions)
         {
-            var list = await context.Tickets.ToListAsync();
-            return Request.CreateResponse(DataSourceLoader.Load(list, loadOptions));
+            //var list = await context.Tickets.ToListAsync();
+            return Request.CreateResponse(DataSourceLoader.Load(context.Tickets, loadOptions));
         }
 
         //public async Task<object> Get()
