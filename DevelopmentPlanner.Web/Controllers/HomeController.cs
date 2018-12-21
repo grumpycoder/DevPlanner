@@ -13,6 +13,11 @@ namespace DevelopmentPlanner.Web.Controllers
             return View();
         }
 
+        public ActionResult PivotGrid()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
