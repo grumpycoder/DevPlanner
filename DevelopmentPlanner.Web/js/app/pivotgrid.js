@@ -37,10 +37,34 @@
         fieldChooser: {
             enabled: true
         },
-        dataSource: DevExpress.data.AspNet.createStore({
-            key: 'id',
-            loadUrl: uri, 
-        }),
+        dataSource: {
+            fields: [
+                {
+                    dataField: 'status',
+                    area: 'row'
+                },
+                {
+                    dataField: 'type',
+                    area: 'row'
+                },
+                {
+                    dataField: 'year',
+                    area: 'column'
+                },
+                {
+                    dataField: 'monthName',
+                    area: 'column'
+                },
+                {
+                    dataField: 'estimatedHours',
+                    area: 'data', 
+                    summaryType: 'sum', 
+                    dataType: 'number'
+                },
+            ],
+            store: DevExpress.data.AspNet.createStore({ key: 'id', loadUrl: uri })
+        },
+        //dataSource:  DevExpress.data.AspNet.createStore({ key: 'id', loadUrl: uri }),
         fieldPanel: {
             showColumnFields: true,
             showDataFields: true,
