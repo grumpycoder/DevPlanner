@@ -21,7 +21,8 @@
                 ]
             },
             { dataField: 'priority', caption: 'Priority' },
-            { dataField: 'estHours', caption: 'Estimate Hours' },
+            { dataField: 'estimatedHours', caption: 'Estimate Hours' },
+            { dataField: 'assigned', caption: 'Assigned' },
             { dataField: 'year', caption: 'Year' },
             { dataField: 'quarter', caption: 'Quarter' },
         ],
@@ -64,7 +65,7 @@
                     showInColumn: 'ticketNumber'
                 },
                 {
-                    column: "estHours",
+                    column: "estimatedHours",
                     displayFormat: 'Estimated Hours {0}',
                     summaryType: "sum",
                     showInGroupFooter: true

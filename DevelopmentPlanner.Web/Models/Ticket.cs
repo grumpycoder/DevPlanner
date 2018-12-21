@@ -12,6 +12,7 @@ namespace DevelopmentPlanner.Web.Models
         public int TicketNumber { get; set; }
         public int ParentTicketNumber { get; set; }
         public string Title { get; set; }
+        public string Assigned { get; set; }
         public string Type { get; set; }
         public string Priority { get; set; }
         public string Status { get; set; }
@@ -20,10 +21,13 @@ namespace DevelopmentPlanner.Web.Models
 
         public DateTime StartDate { get; set; }
 
-        public decimal? EstHours { get; set; }
+        public decimal? EstimatedHours { get; set; }
 
         public int Year { get; set; }
 
         public int Quarter { get; set; }
+
+        public int Month { get; set; }
+        public string MonthName { get; set; }
     }
 }

@@ -39,7 +39,7 @@
         },
         dataSource: DevExpress.data.AspNet.createStore({
             key: 'id',
-            loadUrl: uri
+            loadUrl: uri, 
         }),
         fieldPanel: {
             showColumnFields: true,
@@ -111,4 +111,12 @@
             }
         }
     }
+
+    $("#btnReset").dxButton({
+        text: "Reset the PivotGrid's State",
+        onClick: function () {
+            pivotGrid.getDataSource().state({});
+        }
+    });
+
 }); 
